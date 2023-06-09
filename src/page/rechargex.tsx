@@ -55,7 +55,7 @@ function Rechargex() {
     }
 
     return (
-        <div className='root'>
+        <>
             <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap" rel="stylesheet"/>
 
             <video autoPlay muted loop preload="metadata" id="myVideo">
@@ -179,7 +179,7 @@ function Rechargex() {
                     </div>
                 </div>
             </footer>
-        </div>
+        </>
     );
 }
 

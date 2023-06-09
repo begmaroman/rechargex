@@ -475,6 +475,7 @@ header .site-header .log-out img:last-child {
     background: #ffffffcc;
     border-radius: 40px;
     margin: 0 auto;
+    margin-top: 100px;
     padding: 2.5rem;
     box-sizing: border-box;
     position: relative; }

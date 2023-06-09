@@ -9,6 +9,7 @@ import (
 	"encoding/pem"
 	"errors"
 	"fmt"
+	"math/big"
 	"net/http"
 	"os"
 
@@ -17,6 +18,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/sns"
+	"github.com/ethereum/go-ethereum/params"
 )
 
 const (
@@ -97,7 +99,7 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 	}
 
 	params := &sns.PublishInput{
-		Message:     aws.String(fmt.Sprintf("Rechargex: phone number has been topped up for %s MATIC", amount)),
+		Message:     aws.String(fmt.Sprintf("Nerif Rechargex: your phone number has been topped up for %s USDT", weiToEther(amount))),
 		PhoneNumber: aws.String(phone),
 	}
 
@@ -145,6 +147,13 @@ func rsaDecrypt(privateKey []byte, ciphertext []byte) ([]byte, error) {
 	}
 
 	return rsa.DecryptPKCS1v15(rand.Reader, priv, ciphertext)
+}
+
+func weiToEther(weiRaw string) *big.Float {
+	wei := new(big.Float)
+	wei.SetString(weiRaw)
+
+	return new(big.Float).Quo(wei, big.NewFloat(params.Ether))
 }
 
 func main() {
