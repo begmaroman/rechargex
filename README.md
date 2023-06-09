@@ -14,6 +14,8 @@ Nerif Rechargex consists of the following components:
 1. Rechargex smart contract
 2. Nerif Network Workflow
 3. AWS Lambda function
+4. 
+![diagram.png](docs/diagram.png)
 
 ### Rechargex Contract
 
